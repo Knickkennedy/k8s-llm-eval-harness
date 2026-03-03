@@ -21,19 +21,19 @@ type GenerateRequest struct {
 }
 
 type GenerateResponse struct {
-	Model     string `json:"model"`
-	Response  string `json:"response"`
-	Done      bool   `json:"done"`
-	TotalDuration int64 `json:"total_duration"`
-	EvalCount     int   `json:"eval_count"`
-	PromptEvalCount int `json:"prompt_eval_count"`
+	Model           string `json:"model"`
+	Response        string `json:"response"`
+	Done            bool   `json:"done"`
+	TotalDuration   int64  `json:"total_duration"`
+	EvalCount       int    `json:"eval_count"`
+	PromptEvalCount int    `json:"prompt_eval_count"`
 }
 
 func NewClient(baseURL string) *Client {
 	return &Client{
 		baseURL: baseURL,
 		httpClient: &http.Client{
-			Timeout: 120 * time.Second,
+			Timeout: 300 * time.Second,
 		},
 	}
 }
