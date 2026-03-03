@@ -16,9 +16,9 @@ import (
 )
 
 func main() {
-	ollamaURL    := getEnv("OLLAMA_HOST", "http://ollama.ollama:11434")
-	model        := getEnv("OLLAMA_MODEL", "mistral")
-	metricsPort  := getEnv("METRICS_PORT", "9091")
+	ollamaURL := getEnv("OLLAMA_HOST", "http://ollama.ollama:11434")
+	model := getEnv("OLLAMA_MODEL", "mistral")
+	metricsPort := getEnv("METRICS_PORT", "9091")
 	benchmarkDir := getEnv("BENCHMARK_DIR", "./evaluations/benchmarks")
 
 	log.Printf("Starting eval runner against %s model=%s", ollamaURL, model)
@@ -34,7 +34,7 @@ func main() {
 	client := ollama.NewClient(ollamaURL)
 
 	// Health check Ollama before running evals
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 180*time.Second)
 	defer cancel()
 
 	if err := client.HealthCheck(ctx); err != nil {
@@ -77,7 +77,7 @@ func runSuite(client *ollama.Client, suite benchmarks.Suite, model string) bench
 	for _, benchmark := range suite.Benchmarks {
 		log.Printf("  Running benchmark: %s", benchmark.ID)
 
-		ctx, cancel := context.WithTimeout(context.Background(), 90*time.Second)
+		ctx, cancel := context.WithTimeout(context.Background(), 180*time.Second)
 		start := time.Now()
 
 		resp, err := client.Generate(ctx, model, benchmark.Prompt)
