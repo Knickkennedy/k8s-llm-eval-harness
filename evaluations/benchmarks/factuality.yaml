@@ -1,0 +1,37 @@
+name: factuality
+category: factuality
+benchmarks:
+  - id: factuality-001
+    category: factuality
+    prompt: "What is the capital of France? Answer in one word."
+    expected_keywords:
+      - Paris
+    description: "Basic geography factual recall"
+
+  - id: factuality-002
+    category: factuality
+    prompt: "What programming language was Kubernetes written in? Answer in one word."
+    expected_keywords:
+      - Go
+    description: "Technical factual recall"
+
+  - id: factuality-003
+    category: factuality
+    prompt: "What does CPU stand for? Answer with the full phrase only."
+    expected_keywords:
+      - Central Processing Unit
+    description: "Technical acronym knowledge"
+
+  - id: factuality-004
+    category: factuality
+    prompt: "What is the chemical symbol for water? Answer with just the symbol."
+    expected_keywords:
+      - H2O
+    description: "Basic chemistry factual recall"
+
+  - id: factuality-005
+    category: factuality
+    prompt: "How many bits are in a byte? Answer with just the number."
+    expected_keywords:
+      - "8"
+    description: "Basic computing factual recall"

@@ -1,0 +1,39 @@
+name: reasoning
+category: reasoning
+benchmarks:
+  - id: reasoning-001
+    category: reasoning
+    prompt: "If a train travels at 60mph for 2 hours then 80mph for 1 hour, what is the total distance traveled? Answer with just the number in miles."
+    expected_keywords:
+      - "200"
+    description: "Basic arithmetic and unit reasoning"
+
+  - id: reasoning-002
+    category: reasoning
+    prompt: "A bat and ball cost $1.10 total. The bat costs $1 more than the ball. How much does the ball cost? Answer in cents."
+    expected_keywords:
+      - "5"
+    forbidden_keywords:
+      - "10"
+    description: "Classic cognitive bias test - answer is 5 cents not 10 cents"
+
+  - id: reasoning-003
+    category: reasoning
+    prompt: "All mammals are warm-blooded. Whales are mammals. Are whales warm-blooded? Answer yes or no."
+    expected_keywords:
+      - "yes"
+    description: "Basic syllogistic reasoning"
+
+  - id: reasoning-004
+    category: reasoning
+    prompt: "What comes next in this sequence: 2, 4, 8, 16, 32, ___? Answer with just the number."
+    expected_keywords:
+      - "64"
+    description: "Pattern recognition - geometric sequence"
+
+  - id: reasoning-005
+    category: reasoning
+    prompt: "If you have 3 apples and give away 2, then receive 5 more, how many do you have? Answer with just the number."
+    expected_keywords:
+      - "6"
+    description: "Multi-step arithmetic reasoning"
