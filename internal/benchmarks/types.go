@@ -18,16 +18,17 @@ type Benchmark struct {
 	ExpectedKeywords  []string `yaml:"expected_keywords,omitempty"`
 	ForbiddenKeywords []string `yaml:"forbidden_keywords,omitempty"`
 	Description       string   `yaml:"description"`
+	MaxTokens         int      `yaml:"max_tokens,omitempty"`
 }
 
 // Result represents the outcome of running a single benchmark
 type Result struct {
-	Benchmark     Benchmark
-	Response      string
-	Passed        bool
-	Score         float64
-	DurationMs    int64
-	ErrorMessage  string
+	Benchmark    Benchmark
+	Response     string
+	Passed       bool
+	Score        float64
+	DurationMs   int64
+	ErrorMessage string
 }
 
 // Suite represents a collection of benchmarks

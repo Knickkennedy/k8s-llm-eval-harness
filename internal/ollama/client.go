@@ -15,9 +15,14 @@ type Client struct {
 }
 
 type GenerateRequest struct {
-	Model  string `json:"model"`
-	Prompt string `json:"prompt"`
-	Stream bool   `json:"stream"`
+	Model   string  `json:"model"`
+	Prompt  string  `json:"prompt"`
+	Stream  bool    `json:"stream"`
+	Options Options `json:"options,omitempty"`
+}
+
+type Options struct {
+	NumPredict int `json:"num_predict,omitempty"`
 }
 
 type GenerateResponse struct {
@@ -38,11 +43,17 @@ func NewClient(baseURL string) *Client {
 	}
 }
 
-func (c *Client) Generate(ctx context.Context, model, prompt string) (*GenerateResponse, error) {
+func (c *Client) Generate(ctx context.Context, model, prompt string, maxTokens int) (*GenerateResponse, error) {
 	reqBody := GenerateRequest{
 		Model:  model,
 		Prompt: prompt,
 		Stream: false,
+	}
+
+	if maxTokens > 0 {
+		reqBody.Options = Options{
+			NumPredict: maxTokens,
+		}
 	}
 
 	body, err := json.Marshal(reqBody)

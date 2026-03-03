@@ -80,7 +80,7 @@ func runSuite(client *ollama.Client, suite benchmarks.Suite, model string) bench
 		ctx, cancel := context.WithTimeout(context.Background(), 180*time.Second)
 		start := time.Now()
 
-		resp, err := client.Generate(ctx, model, benchmark.Prompt)
+		resp, err := client.Generate(ctx, model, benchmark.Prompt, benchmark.MaxTokens)
 		elapsed := time.Since(start)
 		cancel()
 
